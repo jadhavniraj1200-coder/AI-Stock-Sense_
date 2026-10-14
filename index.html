@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Swad Restaurant – Smart Inventory & Food Waste Management System</title>
+  <meta name="description" content="A smarter way to manage restaurant inventory, monitor product expiry, reduce food waste, and make intelligent stocking decisions.">
+
+  <!-- Clean modern fonts: Poppins & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Core Stylesheets -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+
+  <!-- =========================================================================
+       Navigation Bar
+       ========================================================================= -->
+  <nav class="navbar" id="mainNav">
+    <div class="container nav-container">
+      <a href="#home" class="nav-brand" id="navLogo">
+        <div class="brand-icon">
+          <!-- Steaming Gourmet Pot SVG Icon -->
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 11h16a1 1 0 0 1 1 1v6a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4v-6a1 1 0 0 1 1-1Z"/>
+            <path d="M6 11V7a6 6 0 0 1 12 0v4"/>
+            <path d="M9 3v1"/>
+            <path d="M12 2v2"/>
+            <path d="M15 3v1"/>
+          </svg>
+        </div>
+        <span>Swad Restaurant</span>
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home" class="nav-link active">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#menu" class="nav-link">Menu</a></li>
+        <li><a href="#dashboard" class="nav-link">Dashboard</a></li>
+        <li><a href="#inventory" class="nav-link">Inventory</a></li>
+        <li><a href="#waste" class="nav-link">Waste Products</a></li>
+        <li><a href="#expired" class="nav-link">Expired Products</a></li>
+        <li><a href="#recommendations" class="nav-link">Smart Insights</a></li>
+        <li><a href="#ai-bot" class="nav-link">AI Waste Bot</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="btn-reset-demo" onclick="window.handleResetData()" title="Reset sample data to default">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+          Reset Demo
+        </button>
+        <a href="#inventory" class="btn-nav-cta">Manage Stock</a>
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle Navigation">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- =========================================================================
+       Home / Hero Section
+       ========================================================================= -->
+  <header class="section hero-section" id="home">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content reveal">
+          <div class="hero-tag">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gravy-600)" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+            Smart Restaurant Inventory & Waste Intelligence
+          </div>
+          <h1 class="hero-heading">
+            Manage Smart. <br>
+            <span class="highlight">Waste Less.</span> <br>
+            Serve Fresh.
+          </h1>
+          <p class="hero-subtitle">
+            A smarter way to manage restaurant inventory, reduce food waste, and keep every ingredient under control. Solve stock shortages and prevent losses before they happen.
+          </p>
+
+          <div class="hero-buttons">
+            <a href="#dashboard" class="btn-primary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg>
+              Explore Dashboard
+            </a>
+            <a href="#menu" class="btn-secondary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+              View Menu
+            </a>
+          </div>
+
+          <!-- Real-Time Live Statistic Cards -->
+          <div class="hero-stats-row">
+            <div class="hero-stat-card delay-1">
+              <div class="stat-label">Total Stock</div>
+              <div class="stat-number" id="heroStatTotal">14</div>
+            </div>
+            <div class="hero-stat-card delay-2">
+              <div class="stat-label" style="color: var(--status-lowstock);">Low Stock</div>
+              <div class="stat-number" style="color: var(--status-lowstock);" id="heroStatLow">3</div>
+            </div>
+            <div class="hero-stat-card delay-3">
+              <div class="stat-label" style="color: var(--status-expired);">Expired</div>
+              <div class="stat-number" style="color: var(--status-expired);" id="heroStatExpired">2</div>
+            </div>
+            <div class="hero-stat-card delay-4">
+              <div class="stat-label">Loss Logged</div>
+              <div class="stat-number" style="color: var(--gravy-700);" id="heroStatWaste">₹698</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-image-wrap reveal delay-2">
+          <div class="hero-image-card">
+            <img src="assets/hero_food.svg" alt="Royal Swad Restaurant Culinary Thali" class="hero-img" />
+          </div>
+
+          <!-- Floating Badges -->
+          <div class="hero-floating-badge floating-1">
+            <div style="width: 38px; height: 38px; border-radius: var(--radius-sm); background: #ecfdf5; display: flex; align-items: center; justify-content: center; color: #15803d;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div>
+              <div style="font-size: 0.825rem; font-weight: 700; color: var(--gravy-900);">Zero-Waste Goal</div>
+              <div style="font-size: 0.725rem; color: var(--text-secondary);">68% Food Waste Reduced</div>
+            </div>
+          </div>
+
+          <div class="hero-floating-badge floating-2">
+            <div style="width: 38px; height: 38px; border-radius: var(--radius-sm); background: #fff7ed; display: flex; align-items: center; justify-content: center; color: #c2410c;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div>
+              <div style="font-size: 0.825rem; font-weight: 700; color: var(--gravy-900);">Active Expiry Tracker</div>
+              <div style="font-size: 0.725rem; color: var(--text-secondary);">Automated Daily Alerts</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       About Section
+       ========================================================================= -->
+  <section class="section" id="about" style="background-color: #ffffff;">
+    <div class="container">
+      <div class="section-title-wrap reveal">
+        <span class="section-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+          Why Swad Restaurant System
+        </span>
+        <h2 class="section-heading">Smart Operations Behind Every Authentic Dish</h2>
+        <p class="section-subheading">
+          Restaurant kitchens walk a fine line between stocking enough fresh ingredients to meet peak dinner rush and letting perishable dairy or vegetables spoil. Swad gives kitchen heads complete real-time visibility.
+        </p>
+      </div>
+
+      <div class="features-grid">
+        <!-- Feature 1: Smart Inventory -->
+        <div class="feature-card reveal delay-1">
+          <div class="feature-icon-box">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>
+          </div>
+          <h3 class="feature-title">Smart Inventory</h3>
+          <p class="feature-desc">
+            Monitor available stock, exact quantities in kg and litres, minimum buffer levels, and supplier unit costs across all food categories in real time.
+          </p>
+        </div>
+
+        <!-- Feature 2: Waste Reduction -->
+        <div class="feature-card reveal delay-2">
+          <div class="feature-icon-box">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2v10"/><path d="M18.4 6.6a9 9 0 1 1-12.77.01"/></svg>
+          </div>
+          <h3 class="feature-title">Waste Reduction</h3>
+          <p class="feature-desc">
+            Log, classify, and analyze food waste by root causes like overstocking, prep spills, or improper storage. Calculate direct financial losses in ₹.
+          </p>
+        </div>
+
+        <!-- Feature 3: Expiry Monitoring -->
+        <div class="feature-card reveal delay-3">
+          <div class="feature-icon-box">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="m9 16 2 2 4-4"/></svg>
+          </div>
+          <h3 class="feature-title">Expiry Monitoring</h3>
+          <p class="feature-desc">
+            Automated date countdown detects products expiring in 3–7 days and flags past-due items with 1-click discarding to prevent serving expired food.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       Restaurant Menu Section
+       ========================================================================= -->
+  <section class="section" id="menu" style="background-color: var(--bg-main);">
+    <div class="container">
+      <div class="section-title-wrap reveal">
+        <span class="section-badge">Freshly Prepared</span>
+        <h2 class="section-heading">Swad Signature Menu</h2>
+        <p class="section-subheading">
+          Explore delicious appetizers, gravies, and breads. Menu availability status updates instantly when ingredients are marked unavailable or low in stock.
+        </p>
+      </div>
+
+      <!-- Controls: Category Tabs & Search -->
+      <div class="menu-controls reveal delay-1">
+        <div class="category-tabs" id="menuTabs">
+          <button class="tab-btn active" data-category="all">All Dishes</button>
+          <button class="tab-btn" data-category="Starters">Starters</button>
+          <button class="tab-btn" data-category="Main Course">Main Course</button>
+          <button class="tab-btn" data-category="Breads">Breads</button>
+          <button class="tab-btn" data-category="Beverages">Beverages</button>
+          <button class="tab-btn" data-category="Desserts">Desserts</button>
+        </div>
+
+        <div class="search-input-wrap">
+          <span class="search-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          </span>
+          <input type="text" id="menuSearch" class="search-input" placeholder="Search dish name or ingredient...">
+        </div>
+      </div>
+
+      <!-- Dynamic Menu Dishes Grid -->
+      <div class="menu-grid" id="menuCardsGrid">
+        <!-- Rendered by js/ui.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       Inventory Dashboard Section
+       ========================================================================= -->
+  <section class="section" id="dashboard" style="background-color: #ffffff;">
+    <div class="container">
+      <div class="section-title-wrap reveal">
+        <span class="section-badge">Live Operations</span>
+        <h2 class="section-heading">Kitchen Inventory Dashboard</h2>
+        <p class="section-subheading">
+          Track real-time stock levels, monitor critical buffer thresholds, and oversee food waste metrics across all restaurant storage zones.
+        </p>
+      </div>
+
+      <!-- Summary KPI Metric Cards -->
+      <div class="dashboard-grid reveal delay-1">
+        <div class="metric-card">
+          <div class="metric-top">
+            <span class="metric-title">Total Products</span>
+            <div class="metric-icon-small">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="8" height="4" x="8" y="2" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>
+            </div>
+          </div>
+          <div class="metric-value" id="dashTotalProducts">14</div>
+          <div class="metric-sub">Catalogued items</div>
+        </div>
+
+        <div class="metric-card alert-green">
+          <div class="metric-top">
+            <span class="metric-title">In Stock</span>
+            <div class="metric-icon-small" style="background: var(--status-instock-bg); color: var(--status-instock);">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+          </div>
+          <div class="metric-value" id="dashAvailProducts" style="color: var(--status-instock);">11</div>
+          <div class="metric-sub">Ready for service</div>
+        </div>
+
+        <div class="metric-card alert-amber">
+          <div class="metric-top">
+            <span class="metric-title">Low Stock</span>
+            <div class="metric-icon-small" style="background: var(--status-lowstock-bg); color: var(--status-lowstock);">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            </div>
+          </div>
+          <div class="metric-value" id="dashLowStock" style="color: var(--status-lowstock);">3</div>
+          <div class="metric-sub">Below buffer level</div>
+        </div>
+
+        <div class="metric-card alert-red">
+          <div class="metric-top">
+            <span class="metric-title">Expired</span>
+            <div class="metric-icon-small" style="background: var(--status-expired-bg); color: var(--status-expired);">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+            </div>
+          </div>
+          <div class="metric-value" id="dashExpired" style="color: var(--status-expired);">2</div>
+          <div class="metric-sub">Needs immediate discard</div>
+        </div>
+
+        <div class="metric-card alert-orange">
+          <div class="metric-top">
+            <span class="metric-title">Near Expiry</span>
+            <div class="metric-icon-small" style="background: var(--status-nearexpiry-bg); color: var(--status-nearexpiry);">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+          </div>
+          <div class="metric-value" id="dashNearExpiry" style="color: var(--status-nearexpiry);">3</div>
+          <div class="metric-sub">&le; 3 days remaining</div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-top">
+            <span class="metric-title">Est. Waste Loss</span>
+            <div class="metric-icon-small" style="background: var(--gravy-100); color: var(--gravy-800);">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+          </div>
+          <div class="metric-value" id="dashWasteLoss" style="color: var(--gravy-700);">₹698</div>
+          <div class="metric-sub">Recorded this period</div>
+        </div>
+      </div>
+
+      <!-- Inventory Table Sub-section -->
+      <div id="inventory" class="table-card reveal delay-2">
+        <div class="table-header-bar">
+          <div class="table-title-group">
+            <h3>Ingredient Stock Management</h3>
+            <p>Live inventory quantities, safe thresholds, and expiry statuses.</p>
+          </div>
+
+          <div class="table-actions-group">
+            <!-- Search & Filters -->
+            <div class="search-input-wrap" style="min-width: 220px;">
+              <span class="search-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+              </span>
+              <input type="text" id="invSearch" class="search-input" placeholder="Search ingredients..." style="padding: 8px 12px 8px 36px; font-size: 0.85rem;">
+            </div>
+
+            <select id="invCategoryFilter" class="form-select" style="width: auto; padding: 8px 12px; font-size: 0.85rem;">
+              <option value="all">All Categories</option>
+              <option value="Dairy">Dairy</option>
+              <option value="Vegetables">Vegetables</option>
+              <option value="Grains & Staples">Grains & Staples</option>
+              <option value="Oils & Spices">Oils & Spices</option>
+            </select>
+
+            <select id="invStatusFilter" class="form-select" style="width: auto; padding: 8px 12px; font-size: 0.85rem;">
+              <option value="all">All Statuses</option>
+              <option value="instock">In Stock</option>
+              <option value="lowstock">Low Stock</option>
+              <option value="nearexpiry">Near Expiry</option>
+              <option value="expired">Expired</option>
+            </select>
+
+            <button class="btn-primary" onclick="window.handleOpenAddModal()" style="padding: 9px 16px; font-size: 0.85rem;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              Add Product
+            </button>
+
+            <button id="btnExportCSV" class="btn-secondary" style="padding: 8px 14px; font-size: 0.85rem;" title="Export table to CSV">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Export CSV
+            </button>
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Product Name</th>
+                <th>Category</th>
+                <th>Current Qty</th>
+                <th>Unit</th>
+                <th>Min. Level</th>
+                <th>Expiry Date</th>
+                <th>Stock Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="inventoryTableBody">
+              <!-- Rendered by js/ui.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       Waste Products Section
+       ========================================================================= -->
+  <section class="section" id="waste" style="background-color: var(--bg-main);">
+    <div class="container">
+      <div class="section-title-wrap reveal">
+        <span class="section-badge" style="background: var(--status-expired-bg); color: var(--status-expired); border-color: var(--status-expired-border);">
+          Waste Tracking
+        </span>
+        <h2 class="section-heading">Food Waste & Loss Log</h2>
+        <p class="section-subheading">
+          Transparently identify where inventory is leaking. Tracking root causes allows the head chef to adjust batch cooking and grocery procurement quantities.
+        </p>
+      </div>
+
+      <!-- Motivation Banner -->
+      <div style="background: #ffffff; border: 1px solid var(--bg-cream-border); border-radius: var(--radius-lg); padding: 20px 24px; margin-bottom: 28px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;" class="reveal delay-1">
+        <div style="display: flex; align-items: center; gap: 16px;">
+          <div style="width: 44px; height: 44px; border-radius: var(--radius-md); background: #ecfdf5; color: #15803d; display: flex; align-items: center; justify-content: center;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 22h20"/><path d="M12 2v20"/><path d="m4.93 10.93 4.24 4.24"/><path d="m14.83 9.17 4.24-4.24"/><path d="m14.83 15.17 4.24 4.24"/><path d="m4.93 5.07 4.24-4.24"/></svg>
+          </div>
+          <div>
+            <h4 style="font-size: 1.05rem; font-weight: 700; color: var(--gravy-900);">Every Gram Saved Counts</h4>
+            <p style="font-size: 0.85rem; color: var(--text-secondary);">Swad's current waste control performance: <strong style="color: #15803d;">88% Efficiency</strong> (12% lower than regional industry benchmark).</p>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 20px;">
+          <div>
+            <div style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); font-weight: 600;">Total Wasted</div>
+            <div style="font-size: 1.35rem; font-weight: 800; color: var(--gravy-800);" id="wasteTotalKg">13.7 kg</div>
+          </div>
+          <div>
+            <div style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); font-weight: 600;">Financial Loss</div>
+            <div style="font-size: 1.35rem; font-weight: 800; color: var(--status-expired);" id="wasteTotalLoss">₹698</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Waste Table Card -->
+      <div class="table-card reveal delay-2">
+        <div class="table-header-bar">
+          <div class="table-title-group">
+            <h3>Logged Waste Events</h3>
+            <p>Detailed incident logs with specific reason categorization.</p>
+          </div>
+
+          <div class="table-actions-group">
+            <select id="wasteReasonFilter" class="form-select" style="width: auto; padding: 8px 12px; font-size: 0.85rem;">
+              <option value="all">All Waste Reasons</option>
+              <option value="Overstocking">Overstocking</option>
+              <option value="Spoilage">Spoilage</option>
+              <option value="Unsold Food">Unsold Food</option>
+              <option value="Improper Storage">Improper Storage</option>
+              <option value="Preparation Spill">Preparation Spill</option>
+            </select>
+
+            <button class="btn-primary" onclick="window.handleOpenWasteModal()" style="padding: 9px 16px; font-size: 0.85rem; background: var(--gravy-800);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              Record Food Waste
+            </button>
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Product Name</th>
+                <th>Qty Wasted</th>
+                <th>Reason for Waste</th>
+                <th>Date Logged</th>
+                <th>Estimated Loss (₹)</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="wasteTableBody">
+              <!-- Rendered by js/ui.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       Expired Products Section
+       ========================================================================= -->
+  <section class="section" id="expired" style="background-color: #ffffff;">
+    <div class="container">
+      <div class="section-title-wrap reveal">
+        <span class="section-badge" style="background: var(--status-expired-bg); color: var(--status-expired); border-color: var(--status-expired-border);">
+          Food Safety Alert
+        </span>
+        <h2 class="section-heading">Expired & Soon-to-Expire Stock</h2>
+        <p class="section-subheading">
+          Automated safety filter flags ingredients whose shelf-life has elapsed or is approaching in 3 to 7 days.
+        </p>
+      </div>
+
+      <!-- Warning Callout Banner -->
+      <div style="background: #fef2f2; border: 1px solid #fecaca; border-radius: var(--radius-lg); padding: 18px 24px; margin-bottom: 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;" class="reveal delay-1">
+        <div style="display: flex; align-items: center; gap: 14px;">
+          <div style="width: 40px; height: 40px; border-radius: var(--radius-sm); background: #fee2e2; color: #b91c1c; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          </div>
+          <div>
+            <strong style="color: #991b1b; font-size: 0.95rem;">Crucial Kitchen Protocol:</strong>
+            <p style="color: #7f1d1d; font-size: 0.85rem; margin: 0;">Expired ingredients must NEVER be used in menu preparation. Click "Mark Discarded" to automatically record the waste loss and remove from cooking inventory.</p>
+          </div>
+        </div>
+
+        <span id="expiredAlertCount" class="badge badge-expired" style="font-size: 0.85rem; padding: 6px 14px;">2 Critical Expired</span>
+      </div>
+
+      <!-- Filter Tabs -->
+      <div class="menu-controls reveal delay-2" style="margin-bottom: 20px;">
+        <div class="category-tabs" id="expiredTabs">
+          <button class="tab-btn active" data-tab="all">All Alerts</button>
+          <button class="tab-btn" data-tab="expired">Expired Only</button>
+          <button class="tab-btn" data-tab="expiring_soon">Expiring in 3 Days</button>
+        </div>
+      </div>
+
+      <!-- Expired List Container -->
+      <div id="expiredProductsList" class="table-card reveal delay-3">
+        <!-- Rendered by js/ui.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       Smart Stock Suggestions (Recommendations Engine)
+       ========================================================================= -->
+  <section class="section" id="recommendations" style="background-color: var(--bg-main);">
+    <div class="container">
+      <div class="section-title-wrap reveal">
+        <span class="section-badge">Predictive Purchasing</span>
+        <h2 class="section-heading">Smart Stock Recommendations</h2>
+        <p class="section-subheading">
+          Simulated demand analysis flags ingredients needing replenishment, highlights excess stock risking spoilage, and suggests dish specials to clear near-expiry inventory.
+        </p>
+      </div>
+
+      <div class="recommendations-grid" id="recommendationsGrid">
+        <!-- Rendered by js/ui.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       AI Chatbot Section (Chef Swad AI - Waste & Inventory Calculator)
+       ========================================================================= -->
+  <section class="section" id="ai-bot" style="background-color: var(--bg-cream-tint);">
+    <div class="container">
+      <div class="section-title-wrap reveal">
+        <span class="section-badge" style="background: #ffffff; color: var(--gravy-800); border-color: var(--gravy-200);">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2v4"/><path d="m4.93 4.93 2.83 2.83"/><path d="M2 12h4"/><path d="m4.93 19.07 2.83-2.83"/><path d="M12 22v-4"/><path d="m19.07 19.07-2.83-2.83"/><path d="M22 12h-4"/><path d="m19.07 4.93-2.83 2.83"/></svg>
+          Chef Swad AI Assistant
+        </span>
+        <h2 class="section-heading">Smart Waste & Inventory Calculator Bot</h2>
+        <p class="section-subheading">
+          Chat with our intelligent culinary assistant to instantly calculate waste losses, check expiry deadlines, forecast ingredient demand, and receive surplus recipes.
+        </p>
+      </div>
+
+      <!-- Grand Interactive Chat Card -->
+      <div class="chat-box-card reveal delay-1">
+        <!-- Chat Header -->
+        <div class="chat-header-bar">
+          <div class="chat-bot-identity">
+            <div class="chat-bot-avatar">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                <path d="M4 11h16a1 1 0 0 1 1 1v6a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4v-6a1 1 0 0 1 1-1Z"/>
+                <path d="M6 11V7a6 6 0 0 1 12 0v4"/>
+                <path d="M9 3v1"/>
+                <path d="M12 2v2"/>
+                <path d="M15 3v1"/>
+              </svg>
+            </div>
+            <div>
+              <div class="chat-bot-name">
+                Chef Swad AI
+                <span class="chat-bot-status-pill">Online & Calculating</span>
+              </div>
+              <div style="font-size: 0.775rem; opacity: 0.85;">Connected to Live Restaurant Inventory & Waste Database</div>
+            </div>
+          </div>
+
+          <button class="btn-clear-chat" onclick="window.handleClearChat()" title="Reset chat history">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+            Clear Chat
+          </button>
+        </div>
+
+        <!-- Chat Messages Scroll Area -->
+        <div class="chat-messages-area" id="chatMessagesContainer">
+          <!-- Dynamically populated by js/ui.js -->
+        </div>
+
+        <!-- Suggestion Chips Tray -->
+        <div class="chat-chips-tray">
+          <button class="chat-chip" data-prompt="Calculate waste for 5 kg spoiled tomatoes">🧮 Calculate 5 kg spoiled tomatoes</button>
+          <button class="chat-chip" data-prompt="Calculate loss for 3 litres milk spoiled">🥛 Calculate 3 L milk spoiled</button>
+          <button class="chat-chip" data-prompt="Which ingredients are expired or expiring soon?">⚠️ What is expired or near expiry?</button>
+          <button class="chat-chip" data-prompt="Suggest a recipe to use up near-expiry milk and paneer">🍲 Zero-waste recipes</button>
+          <button class="chat-chip" data-prompt="What is our total food waste this week?">📊 Total waste analytics</button>
+          <button class="chat-chip" data-prompt="Show low stock ingredients that need restocking">📦 Check low stock items</button>
+        </div>
+
+        <!-- Chat Input Form -->
+        <form id="chatForm" class="chat-input-bar">
+          <input type="text" id="chatInput" class="chat-input-field" placeholder="Ask Chef AI (e.g. 'Calculate waste for 3 kg paneer' or 'What is expiring?')..." autocomplete="off" required>
+          <button type="submit" class="btn-chat-send" aria-label="Send Message" title="Send message">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       Reports & Analytics Section
+       ========================================================================= -->
+  <section class="section" id="analytics" style="background-color: #ffffff;">
+    <div class="container">
+      <div class="section-title-wrap reveal">
+        <span class="section-badge">Cost & Trends</span>
+        <h2 class="section-heading">Inventory & Waste Analytics</h2>
+        <p class="section-subheading">
+          Visual metrics showing asset distribution, top drivers of kitchen loss, and projected monthly cost savings.
+        </p>
+      </div>
+
+      <div class="analytics-grid reveal delay-1">
+        <!-- Chart 1: Inventory Valuation by Category -->
+        <div class="chart-card">
+          <div class="chart-header">
+            <div>
+              <h4 class="chart-title">Stock Valuation by Category</h4>
+              <span class="chart-subtitle">Distribution of capital in store</span>
+            </div>
+          </div>
+          <div id="chartCategoryDist" class="chart-container">
+            <!-- Rendered by js/ui.js -->
+          </div>
+        </div>
+
+        <!-- Chart 2: Waste Breakdown by Reason -->
+        <div class="chart-card">
+          <div class="chart-header">
+            <div>
+              <h4 class="chart-title">Loss Breakdown by Root Cause</h4>
+              <span class="chart-subtitle">Financial impact in Indian Rupees (₹)</span>
+            </div>
+          </div>
+          <div id="chartWasteReason" class="chart-container">
+            <!-- Rendered by js/ui.js -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Potential Savings Highlight Banner -->
+      <div class="savings-card-banner reveal delay-2">
+        <div class="savings-content">
+          <h3>Potential Monthly Savings with Swad Intelligence</h3>
+          <p>
+            By reordering based on dynamic thresholds, featuring near-expiry items as daily specials, and maintaining proper storage standards, your kitchen can recoup up to 68% of preventable food loss.
+          </p>
+        </div>
+
+        <div class="savings-number-box">
+          <div class="savings-val" id="estimatedSavingsVal">₹4,850</div>
+          <div class="savings-lbl">Projected Monthly Savings</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       Modals
+       ========================================================================= -->
+  <!-- 1. Add / Edit Product Modal -->
+  <div class="modal-backdrop" id="productModal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title" id="productModalTitle">Add New Ingredient</h3>
+        <button class="modal-close-btn" onclick="window.closeProductModal()" aria-label="Close dialog">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <form id="productForm">
+        <div class="modal-body">
+          <input type="hidden" id="prodId">
+          <div class="form-group">
+            <label class="form-label" for="prodName">Ingredient / Product Name *</label>
+            <input type="text" id="prodName" class="form-input" placeholder="e.g. Fresh Malai Paneer" required>
+          </div>
+
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label" for="prodCategory">Category *</label>
+              <select id="prodCategory" class="form-select" required>
+                <option value="Dairy">Dairy</option>
+                <option value="Vegetables">Vegetables</option>
+                <option value="Grains & Staples">Grains & Staples</option>
+                <option value="Oils & Spices">Oils & Spices</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="prodUnit">Measurement Unit *</label>
+              <select id="prodUnit" class="form-select" required>
+                <option value="kg">kg (Kilograms)</option>
+                <option value="L">L (Litres)</option>
+                <option value="pack">pack (Packages)</option>
+                <option value="pcs">pcs (Pieces)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="prodQuantity">Current Quantity *</label>
+              <input type="number" id="prodQuantity" class="form-input" min="0" step="0.1" placeholder="e.g. 5.5" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="prodMinStock">Min. Stock Buffer *</label>
+              <input type="number" id="prodMinStock" class="form-input" min="0" step="0.1" placeholder="e.g. 2.0" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="prodCost">Cost Per Unit (₹) *</label>
+              <input type="number" id="prodCost" class="form-input" min="0" step="1" placeholder="e.g. 340" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="prodExpiry">Expiry Date *</label>
+              <input type="date" id="prodExpiry" class="form-input" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="prodNotes">Kitchen Usage Notes / Supplier</label>
+            <textarea id="prodNotes" class="form-textarea" rows="2" placeholder="e.g. High turnover ingredient, refrigerated at 4°C"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-secondary" onclick="window.closeProductModal()">Cancel</button>
+          <button type="submit" class="btn-primary">Save Ingredient</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 2. Record Food Waste Modal -->
+  <div class="modal-backdrop" id="wasteModal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title">Record Food Waste Incident</h3>
+        <button class="modal-close-btn" onclick="window.closeWasteModal()" aria-label="Close dialog">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <form id="wasteForm">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label" for="wasteProdName">Product or Dish Name *</label>
+            <input type="text" id="wasteProdName" class="form-input" placeholder="e.g. Overcooked Rice Batch" required>
+          </div>
+
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label" for="wasteQuantity">Quantity Wasted *</label>
+              <input type="number" id="wasteQuantity" class="form-input" min="0.1" step="0.1" placeholder="e.g. 2.5" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="wasteUnit">Unit *</label>
+              <select id="wasteUnit" class="form-select" required>
+                <option value="kg">kg</option>
+                <option value="L">L</option>
+                <option value="pack">pack</option>
+                <option value="pcs">pcs</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="wasteReasonSelect">Primary Reason *</label>
+              <select id="wasteReasonSelect" class="form-select" required>
+                <option value="Overstocking">Overstocking</option>
+                <option value="Spoilage">Spoilage</option>
+                <option value="Unsold Food">Unsold Food</option>
+                <option value="Improper Storage">Improper Storage</option>
+                <option value="Preparation Spill">Preparation Spill</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="wasteLossInput">Estimated Financial Loss (₹) *</label>
+              <input type="number" id="wasteLossInput" class="form-input" min="0" step="1" placeholder="e.g. 180" required>
+            </div>
+
+            <div class="form-group full-width">
+              <label class="form-label" for="wasteCategory">Category</label>
+              <select id="wasteCategory" class="form-select">
+                <option value="General">General</option>
+                <option value="Dairy">Dairy</option>
+                <option value="Vegetables">Vegetables</option>
+                <option value="Grains & Staples">Grains & Staples</option>
+                <option value="Oils & Spices">Oils & Spices</option>
+                <option value="Unsold Food">Unsold Food</option>
+              </select>
+            </div>
+
+            <div class="form-group full-width">
+              <label class="form-label" for="wasteDate">Date of Incident *</label>
+              <input type="date" id="wasteDate" class="form-input" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="wasteNotes">Notes / Corrective Preventive Action</label>
+            <textarea id="wasteNotes" class="form-textarea" rows="2" placeholder="e.g. Warm ambient temperature in prep zone"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-secondary" onclick="window.closeWasteModal()">Cancel</button>
+          <button type="submit" class="btn-primary" style="background: var(--status-expired);">Record Waste</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 3. Confirm Delete Product Modal -->
+  <div class="modal-backdrop" id="deleteConfirmModal">
+    <div class="modal-dialog" style="max-width: 440px;">
+      <div class="modal-header">
+        <h3 class="modal-title" style="color: var(--status-expired);">Confirm Removal</h3>
+        <button class="modal-close-btn" onclick="window.closeDeleteModal()" aria-label="Close dialog">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: 0.95rem; color: var(--text-primary); margin-bottom: 8px;">
+          Are you sure you want to remove <strong id="deleteItemName">this product</strong> from active inventory records?
+        </p>
+        <p style="font-size: 0.825rem; color: var(--text-muted);">
+          This action will immediately remove the ingredient from stock calculation tables.
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-secondary" onclick="window.closeDeleteModal()">Cancel</button>
+        <button type="button" class="btn-primary" id="confirmDeleteBtn" style="background: var(--status-expired);">Delete Product</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       Footer
+       ========================================================================= -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h4>
+            <span style="display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; background: var(--gravy-600); border-radius: var(--radius-sm); color: #fff;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 11h16a1 1 0 0 1 1 1v6a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4v-6a1 1 0 0 1 1-1Z"/><path d="M6 11V7a6 6 0 0 1 12 0v4"/></svg>
+            </span>
+            Swad Restaurant
+          </h4>
+          <div class="footer-tagline">"Fresh Food. Smart Stock. Less Waste."</div>
+          <p class="footer-text">
+            A comprehensive restaurant inventory and food waste management platform engineered to eliminate overstocking, identify expired stock early, and protect kitchen margins.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h5>Quick Links</h5>
+          <ul class="footer-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Swad</a></li>
+            <li><a href="#menu">Restaurant Menu</a></li>
+            <li><a href="#dashboard">Live Dashboard</a></li>
+            <li><a href="#inventory">Inventory Control</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Waste & Safety</h5>
+          <ul class="footer-links">
+            <li><a href="#waste">Waste Records Log</a></li>
+            <li><a href="#expired">Expired Stock Alerts</a></li>
+            <li><a href="#recommendations">Purchase Recommendations</a></li>
+            <li><a href="#ai-bot">Chef Swad AI Bot</a></li>
+            <li><a href="#analytics">Financial Analytics</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Restaurant Contact</h5>
+          <div class="footer-contact-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gravy-300)" stroke-width="2" style="flex-shrink:0;"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Plot 42, Heritage Food Court, MG Road, Pune, Maharashtra 411001</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gravy-300)" stroke-width="2" style="flex-shrink:0;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span>+91 98220 12345 / 020 2567 8900</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gravy-300)" stroke-width="2" style="flex-shrink:0;"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            <span>kitchen.manager@swadrestaurant.in</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 Swad Restaurant. Smart Inventory & Food Waste Management Prototype.</div>
+        <div style="display: flex; gap: 16px;">
+          <span>Zero-Waste Kitchen Standard</span>
+          <span>&bull;</span>
+          <span>FSSAI Compliant Practice</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/state.js"></script>
+  <script src="js/chatbot.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

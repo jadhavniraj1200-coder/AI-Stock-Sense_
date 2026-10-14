@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%">
+  <defs>
+    <radialGradient id="thaliSilver" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="70%" stop-color="#e2e8f0" />
+      <stop offset="100%" stop-color="#cbd5e1" />
+    </radialGradient>
+    <filter id="thaliShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#5c2c16" flood-opacity="0.22" />
+    </filter>
+  </defs>
+
+  <rect width="400" height="300" fill="#fbf9f6" />
+
+  <!-- Stainless Steel Grand Thali Platter -->
+  <g filter="url(#thaliShadow)">
+    <circle cx="200" cy="150" r="120" fill="#94a3b8" />
+    <circle cx="200" cy="150" r="114" fill="url(#thaliSilver)" />
+
+    <!-- Center Rice Mound with Jeera -->
+    <circle cx="200" cy="150" r="38" fill="#fef9c3" stroke="#e2e8f0" stroke-width="1.5" />
+    <ellipse cx="198" cy="148" rx="30" ry="24" fill="#ffffff" />
+    <ellipse cx="195" cy="145" rx="3" ry="1.5" fill="#451a03" />
+    <circle cx="202" cy="144" r="2" fill="#15803d" />
+
+    <!-- Katori 1: Paneer Makhani (Top) -->
+    <circle cx="200" cy="72" r="28" fill="#94a3b8" />
+    <circle cx="200" cy="72" r="25" fill="#c2410c" />
+    <rect x="194" y="68" width="11" height="9" rx="1.5" fill="#ffffff" />
+    <path d="M 188 74 Q 200 66 210 74" stroke="#ffffff" stroke-width="2.5" fill="none" opacity="0.8" />
+
+    <!-- Katori 2: Dal Tadka (Top Right) -->
+    <circle cx="265" cy="105" r="27" fill="#94a3b8" />
+    <circle cx="265" cy="105" r="24" fill="#eab308" />
+    <path d="M 258 108 Q 266 98 274 104" stroke="#dc2626" stroke-width="2.5" fill="none" />
+    <circle cx="264" cy="102" r="2" fill="#15803d" />
+
+    <!-- Katori 3: Raita / Curd (Bottom Right) -->
+    <circle cx="265" cy="195" r="27" fill="#94a3b8" />
+    <circle cx="265" cy="195" r="24" fill="#ffffff" />
+    <circle cx="260" cy="192" r="2.5" fill="#f59e0b" />
+    <circle cx="270" cy="196" r="2.5" fill="#f59e0b" />
+    <circle cx="265" cy="202" r="2" fill="#dc2626" />
+
+    <!-- Katori 4: Gulab Jamun (Bottom) -->
+    <circle cx="200" cy="228" r="26" fill="#94a3b8" />
+    <circle cx="200" cy="228" r="23" fill="#fef3c7" />
+    <circle cx="200" cy="228" r="12" fill="#522711" />
+    <polygon points="198,224 200,222 202,224" fill="#84cc16" />
+
+    <!-- Katori 5: Mixed Veg Sabzi (Bottom Left) -->
+    <circle cx="135" cy="195" r="27" fill="#94a3b8" />
+    <circle cx="135" cy="195" r="24" fill="#ea580c" />
+    <circle cx="132" cy="192" r="3" fill="#16a34a" />
+    <circle cx="138" cy="198" r="3" fill="#fde047" />
+
+    <!-- Naan Bread wedges (Left) -->
+    <g transform="translate(130, 115) rotate(-35)">
+      <path d="M -20 -15 Q 15 -35 25 10 Q -5 25 -20 -15 Z" fill="#fef08a" stroke="#ca8a04" stroke-width="1.2" />
+      <ellipse cx="5" cy="-5" rx="5" ry="2.5" fill="#78350f" opacity="0.6" />
+      <circle cx="2" cy="2" r="1.5" fill="#15803d" />
+    </g>
+  </g>
+</svg>

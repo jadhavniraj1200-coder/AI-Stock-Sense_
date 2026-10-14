@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%">
+  <defs>
+    <radialGradient id="pakoraPlate" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#ebdcd0" />
+    </radialGradient>
+    <filter id="pShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#5c2c16" flood-opacity="0.2" />
+    </filter>
+  </defs>
+
+  <rect width="400" height="300" fill="#fbf9f6" />
+
+  <g filter="url(#pShadow)">
+    <ellipse cx="200" cy="155" rx="160" ry="105" fill="#a45325" />
+    <ellipse cx="200" cy="153" rx="150" ry="98" fill="url(#pakoraPlate)" />
+
+    <!-- Golden Crispy Fritters -->
+    <!-- Pakora 1 -->
+    <path d="M 120 150 Q 140 115 170 130 Q 185 165 155 180 Q 120 175 120 150 Z" fill="#d97706" stroke="#b45309" stroke-width="2" />
+    <ellipse cx="145" cy="145" rx="12" ry="7" fill="#f59e0b" />
+    <path d="M 140 135 L 155 160" stroke="#fef08a" stroke-width="2" opacity="0.7" />
+
+    <!-- Pakora 2 -->
+    <path d="M 190 145 Q 215 110 245 135 Q 255 170 220 185 Q 185 175 190 145 Z" fill="#ea580c" stroke="#c2410c" stroke-width="2" />
+    <ellipse cx="220" cy="145" rx="15" ry="9" fill="#f59e0b" />
+
+    <!-- Pakora 3 -->
+    <path d="M 235 155 Q 265 130 285 155 Q 280 185 250 190 Q 230 180 235 155 Z" fill="#d97706" stroke="#b45309" stroke-width="2" />
+
+    <!-- Pakora 4 (Center Foreground cut revealing soft paneer core) -->
+    <g transform="translate(180, 165)">
+      <path d="M -25 0 Q 0 -25 35 -5 Q 40 25 10 35 Q -30 25 -25 0 Z" fill="#f59e0b" stroke="#b45309" stroke-width="2" />
+      <!-- Cut face showing white paneer cube inside -->
+      <polygon points="-5,5 20,-5 25,18 0,25" fill="#fffefb" stroke="#e6dfd5" stroke-width="1.5" />
+    </g>
+
+    <!-- Green Mint Chutney Bowl -->
+    <circle cx="280" cy="115" r="28" fill="#ca8a04" />
+    <circle cx="280" cy="115" r="25" fill="#15803d" />
+    <circle cx="278" cy="112" r="16" fill="#16a34a" />
+    <!-- Fried green chilli garnish -->
+    <path d="M 100 180 Q 130 195 160 185" stroke="#16a34a" stroke-width="4" fill="none" stroke-linecap="round" />
+  </g>
+</svg>

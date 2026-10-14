@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%">
+  <defs>
+    <radialGradient id="naanPlate" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#ebdcd0" />
+    </radialGradient>
+    <filter id="nShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#5c2c16" flood-opacity="0.2" />
+    </filter>
+  </defs>
+
+  <rect width="400" height="300" fill="#fbf9f6" />
+
+  <!-- Basket Platter -->
+  <g filter="url(#nShadow)">
+    <ellipse cx="200" cy="155" rx="160" ry="105" fill="#a45325" />
+    <ellipse cx="200" cy="153" rx="150" ry="98" fill="url(#naanPlate)" />
+
+    <!-- Naan Bread Layer 1 (Underneath) -->
+    <path d="M 90 140 Q 150 70 270 95 Q 310 160 250 200 Q 130 220 90 140 Z" fill="#fde68a" stroke="#ca8a04" stroke-width="1.5" />
+    <!-- Char Marks on Layer 1 -->
+    <ellipse cx="160" cy="120" rx="10" ry="5" fill="#78350f" opacity="0.6" />
+    <ellipse cx="240" cy="130" rx="12" ry="6" fill="#78350f" opacity="0.6" />
+
+    <!-- Naan Bread Layer 2 (Main Foreground) -->
+    <path d="M 120 165 Q 160 95 290 115 Q 330 185 270 220 Q 160 240 120 165 Z" fill="#fef08a" stroke="#d97706" stroke-width="2" />
+
+    <!-- Golden Tandoor Blisters / Char Spots -->
+    <ellipse cx="180" cy="155" rx="14" ry="7" fill="#85411d" opacity="0.75" />
+    <ellipse cx="225" cy="140" rx="11" ry="5" fill="#78350f" opacity="0.8" />
+    <ellipse cx="260" cy="165" rx="15" ry="8" fill="#5c2c16" opacity="0.7" />
+    <ellipse cx="195" cy="190" rx="12" ry="6" fill="#78350f" opacity="0.65" />
+    <ellipse cx="150" cy="180" rx="9" ry="5" fill="#85411d" opacity="0.6" />
+
+    <!-- Melted Rich Butter Glaze -->
+    <path d="M 175 140 Q 220 130 240 160 Q 210 190 175 140" fill="#fde047" opacity="0.6" />
+    <circle cx="210" cy="155" r="8" fill="#facc15" opacity="0.8" />
+
+    <!-- Chopped Garlic and Fresh Coriander -->
+    <g fill="#15803d">
+      <circle cx="170" cy="145" r="2.5" />
+      <circle cx="190" cy="135" r="3" />
+      <circle cx="230" cy="155" r="2.5" />
+      <circle cx="245" cy="145" r="3" />
+      <circle cx="215" cy="175" r="2.5" />
+      <circle cx="160" cy="165" r="2" />
+      <circle cx="255" cy="180" r="2.5" />
+      <!-- Garlic bits -->
+      <circle cx="205" cy="145" r="2.5" fill="#fef9c3" stroke="#ca8a04" stroke-width="0.5" />
+      <circle cx="225" cy="170" r="3" fill="#fef9c3" stroke="#ca8a04" stroke-width="0.5" />
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" width="100%" height="100%">
+  <defs>
+    <radialGradient id="tableGlow" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#fff9f3" />
+      <stop offset="100%" stop-color="#ebdcd0" />
+    </radialGradient>
+    <linearGradient id="bowlGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9a5323" />
+      <stop offset="50%" stop-color="#733b16" />
+      <stop offset="100%" stop-color="#4d240d" />
+    </linearGradient>
+    <radialGradient id="gravyRich" cx="45%" cy="40%" r="55%">
+      <stop offset="0%" stop-color="#ea580c" />
+      <stop offset="45%" stop-color="#c2410c" />
+      <stop offset="85%" stop-color="#7c2d12" />
+      <stop offset="100%" stop-color="#451a03" />
+    </radialGradient>
+    <linearGradient id="creampour" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#fef3c7" />
+    </linearGradient>
+    <filter id="plateShadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="18" stdDeviation="16" flood-color="#431407" flood-opacity="0.25" />
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="600" height="450" fill="url(#tableGlow)" />
+
+  <!-- Wooden Cutting Board Platter -->
+  <g filter="url(#plateShadow)">
+    <rect x="70" y="55" width="460" height="340" rx="36" fill="#82461f" />
+    <rect x="78" y="63" width="444" height="324" rx="30" fill="#9c5628" />
+    <path d="M 120 75 Q 300 85 480 75" stroke="#703613" stroke-width="3" fill="none" opacity="0.3" />
+    <path d="M 100 220 Q 300 230 500 220" stroke="#703613" stroke-width="3" fill="none" opacity="0.2" />
+    <path d="M 110 350 Q 300 360 490 350" stroke="#703613" stroke-width="3" fill="none" opacity="0.3" />
+  </g>
+
+  <!-- Main Brass Kadai Bowl -->
+  <g filter="url(#plateShadow)">
+    <!-- Base Plate -->
+    <ellipse cx="300" cy="225" rx="190" ry="145" fill="#e2d4c7" />
+    <ellipse cx="300" cy="225" rx="180" ry="136" fill="#ffffff" />
+    
+    <!-- Copper Rim Bowl -->
+    <ellipse cx="300" cy="225" rx="160" ry="120" fill="url(#bowlGold)" />
+    
+    <!-- Rich Makhani Curry -->
+    <ellipse cx="300" cy="225" rx="145" ry="108" fill="url(#gravyRich)" />
+
+    <!-- Cream Swirls -->
+    <path d="M 230 200 C 270 170, 340 180, 360 215 C 380 250, 320 280, 270 260 C 240 245, 250 215, 290 220 C 320 225, 330 235, 310 245" 
+          stroke="url(#creampour)" stroke-width="12" stroke-linecap="round" fill="none" opacity="0.9" />
+    <path d="M 270 180 Q 290 190 310 185" stroke="#ffffff" stroke-width="5" stroke-linecap="round" fill="none" opacity="0.8" />
+    
+    <!-- Paneer Cubes -->
+    <g transform="translate(240, 195) rotate(-12)">
+      <polygon points="0,15 25,0 55,10 30,25" fill="#fdfbf7" stroke="#e6dfd5" stroke-width="1" />
+      <polygon points="0,15 30,25 30,55 0,45" fill="#f4ece1" />
+      <polygon points="30,25 55,10 55,40 30,55" fill="#e8dacb" />
+    </g>
+
+    <g transform="translate(320, 205) rotate(18)">
+      <polygon points="0,15 28,0 58,12 30,27" fill="#fdfbf7" stroke="#e6dfd5" stroke-width="1" />
+      <polygon points="0,15 30,27 30,58 0,46" fill="#f4ece1" />
+      <polygon points="30,27 58,12 58,43 30,58" fill="#e8dacb" />
+    </g>
+
+    <g transform="translate(265, 230) rotate(5)">
+      <polygon points="0,12 22,0 48,8 26,20" fill="#fdfbf7" stroke="#e6dfd5" stroke-width="1" />
+      <polygon points="0,12 26,20 26,44 0,36" fill="#f4ece1" />
+      <polygon points="26,20 48,8 48,32 26,44" fill="#e8dacb" />
+    </g>
+
+    <!-- Butter Melting on Top -->
+    <rect x="288" y="208" width="28" height="18" rx="4" fill="#fbbf24" stroke="#f59e0b" stroke-width="1" transform="rotate(-8 290 210)" />
+    <ellipse cx="298" cy="225" rx="22" ry="10" fill="#fef08a" opacity="0.5" />
+
+    <!-- Fresh Coriander Garnish -->
+    <g fill="#16a34a" stroke="#15803d" stroke-width="0.5">
+      <circle cx="280" cy="180" r="4" />
+      <circle cx="285" cy="176" r="3.5" />
+      <circle cx="277" cy="174" r="3" />
+      <circle cx="350" cy="245" r="4" />
+      <circle cx="355" cy="250" r="3.5" />
+      <circle cx="344" cy="252" r="3" />
+      <circle cx="230" cy="240" r="3.5" />
+      <!-- Red Chilli Flakes -->
+      <circle cx="315" cy="190" r="2" fill="#dc2626" />
+      <circle cx="260" cy="210" r="2.5" fill="#dc2626" />
+      <circle cx="330" cy="260" r="2" fill="#dc2626" />
+    </g>
+  </g>
+
+  <!-- Steaming Vapour Lines -->
+  <path d="M 270 140 Q 280 110 265 85" stroke="#ffffff" stroke-width="3.5" fill="none" opacity="0.45" stroke-linecap="round" />
+  <path d="M 310 130 Q 325 100 315 70" stroke="#ffffff" stroke-width="4.5" fill="none" opacity="0.55" stroke-linecap="round" />
+  <path d="M 345 135 Q 335 105 350 80" stroke="#ffffff" stroke-width="3.5" fill="none" opacity="0.45" stroke-linecap="round" />
+</svg>

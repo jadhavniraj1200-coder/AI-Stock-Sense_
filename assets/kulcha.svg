@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%">
+  <defs>
+    <radialGradient id="kulchaPlate" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#ebdcd0" />
+    </radialGradient>
+    <filter id="kShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#5c2c16" flood-opacity="0.2" />
+    </filter>
+  </defs>
+
+  <rect width="400" height="300" fill="#fbf9f6" />
+
+  <g filter="url(#kShadow)">
+    <ellipse cx="200" cy="155" rx="160" ry="105" fill="#a45325" />
+    <ellipse cx="200" cy="153" rx="150" ry="98" fill="url(#kulchaPlate)" />
+
+    <!-- Round Amritsari Kulcha Flatbread -->
+    <circle cx="200" cy="150" r="85" fill="#fef08a" stroke="#ca8a04" stroke-width="2" />
+    
+    <!-- Crispy Tandoor Blisters -->
+    <ellipse cx="160" cy="125" rx="14" ry="7" fill="#78350f" opacity="0.75" />
+    <ellipse cx="230" cy="120" rx="15" ry="8" fill="#78350f" opacity="0.8" />
+    <ellipse cx="235" cy="175" rx="16" ry="8" fill="#5c2c16" opacity="0.7" />
+    <ellipse cx="165" cy="180" rx="12" ry="6" fill="#78350f" opacity="0.65" />
+    <ellipse cx="195" cy="145" rx="16" ry="9" fill="#85411d" opacity="0.7" />
+
+    <!-- Crushed Coriander Seeds & Kasuri Methi -->
+    <g fill="#15803d">
+      <circle cx="175" cy="140" r="3" />
+      <circle cx="215" cy="130" r="2.5" />
+      <circle cx="190" cy="165" r="3" />
+      <circle cx="225" cy="155" r="2.5" />
+      <circle cx="150" cy="155" r="2.5" />
+      <circle cx="240" cy="140" r="3" />
+      <!-- Coriander seeds (light brown rounds) -->
+      <circle cx="180" cy="120" r="3" fill="#ca8a04" stroke="#78350f" stroke-width="0.8" />
+      <circle cx="205" cy="160" r="3" fill="#ca8a04" stroke="#78350f" stroke-width="0.8" />
+    </g>
+
+    <!-- Melting Butter Cube on center -->
+    <rect x="188" y="140" width="24" height="18" rx="4" fill="#fbbf24" stroke="#f59e0b" stroke-width="1.5" />
+    <ellipse cx="200" cy="155" rx="20" ry="8" fill="#fef08a" opacity="0.6" />
+  </g>
+</svg>

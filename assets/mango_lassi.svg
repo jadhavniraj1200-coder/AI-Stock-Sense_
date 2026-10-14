@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="lassiGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24" />
+      <stop offset="50%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#d97706" />
+    </linearGradient>
+    <filter id="lShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#5c2c16" flood-opacity="0.22" />
+    </filter>
+  </defs>
+
+  <rect width="400" height="300" fill="#fbf9f6" />
+
+  <!-- Traditional Earthen Clay Glass (Kulhad) -->
+  <g filter="url(#lShadow)" transform="translate(200, 155)">
+    <!-- Plate base -->
+    <ellipse cx="0" cy="90" rx="90" ry="25" fill="#e2d4c7" />
+    <ellipse cx="0" cy="88" rx="82" ry="20" fill="#ffffff" />
+
+    <!-- Glass Shape -->
+    <path d="M -48 -80 L -36 70 C -36 82, 36 82, 36 70 L 48 -80 Z" fill="#9a5323" stroke="#78350f" stroke-width="3" />
+    <!-- Clay texture rings -->
+    <path d="M -44 -30 Q 0 -22 44 -30" stroke="#703613" stroke-width="2.5" fill="none" opacity="0.4" />
+    <path d="M -40 20 Q 0 28 40 20" stroke="#703613" stroke-width="2.5" fill="none" opacity="0.4" />
+
+    <!-- Frothy Thick Mango Lassi Fill -->
+    <ellipse cx="0" cy="-80" rx="48" ry="18" fill="url(#lassiGrad)" stroke="#b45309" stroke-width="1.5" />
+    <!-- White Malai / Cream Layer Swirl on Top -->
+    <ellipse cx="-4" cy="-82" rx="36" ry="12" fill="#fffbeb" opacity="0.9" />
+    <path d="M -20 -82 Q 0 -92 20 -80" stroke="#fef08a" stroke-width="4" fill="none" stroke-linecap="round" />
+
+    <!-- Saffron Strands & Pistachio Nuts -->
+    <!-- Saffron -->
+    <path d="M -12 -84 Q -4 -88 6 -83" stroke="#dc2626" stroke-width="2" fill="none" />
+    <path d="M 5 -80 Q 14 -85 10 -76" stroke="#ea580c" stroke-width="2" fill="none" />
+    <!-- Crushed Pistachio -->
+    <circle cx="-16" cy="-80" r="3" fill="#65a30d" />
+    <circle cx="-6" cy="-78" r="2.5" fill="#65a30d" />
+    <circle cx="15" cy="-82" r="3" fill="#65a30d" />
+    <!-- Almond Slivers -->
+    <ellipse cx="0" cy="-82" rx="4" ry="2" fill="#fef3c7" />
+
+    <!-- Paper Straw -->
+    <g transform="translate(18, -135) rotate(15)">
+      <rect x="0" y="0" width="10" height="90" rx="4" fill="#fef3c7" stroke="#d97706" stroke-width="1" />
+      <line x1="0" y1="20" x2="10" y2="15" stroke="#ea580c" stroke-width="2" />
+      <line x1="0" y1="40" x2="10" y2="35" stroke="#ea580c" stroke-width="2" />
+      <line x1="0" y1="60" x2="10" y2="55" stroke="#ea580c" stroke-width="2" />
+    </g>
+  </g>
+</svg>
